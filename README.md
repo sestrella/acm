@@ -1,4 +1,4 @@
-# acm (acm)
+# auto-commit-msg (acm)
 
 [![Build](https://github.com/sestrella/acm/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/acm/actions/workflows/build.yml)
 
