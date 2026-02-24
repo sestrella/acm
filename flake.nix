@@ -39,7 +39,7 @@
       );
 
       overlays.default = final: prev: {
-        auto-commit-msg = self.packages.${prev.system}.default;
+        acm = self.packages.${prev.system}.default;
       };
 
       templates.default = {
