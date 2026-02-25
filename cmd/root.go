@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sestrella/acm/internal/git"
-	"github.com/sestrella/acm/internal/openai"
+	"github.com/sestrella/auto-commit-msg/internal/git"
+	"github.com/sestrella/auto-commit-msg/internal/openai"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -32,7 +32,7 @@ type Trace struct {
 }
 
 type TraceWrapper struct {
-	Trace Trace `json:"acm"`
+	Trace Trace `json:"auto-commit-msg"`
 }
 
 var configFile string
@@ -166,7 +166,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	rootCmd.PersistentFlags().StringVar(&configFile, "config", "", "config file (default is .acm.toml)")
+	rootCmd.PersistentFlags().StringVar(&configFile, "config", "", "config file (default is .auto-commit-msg.toml)")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -181,7 +181,7 @@ func initConfig() {
 
 		viper.AddConfigPath(home)
 		viper.AddConfigPath(".")
-		viper.SetConfigName(".acm")
+		viper.SetConfigName(".auto-commit-msg")
 		viper.SetConfigType("toml")
 	}
 
