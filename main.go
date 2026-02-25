@@ -3,7 +3,7 @@ package main
 import (
 	_ "embed"
 
-	"github.com/sestrella/acm/cmd"
+	"github.com/sestrella/auto-commit-msg/cmd"
 )
 
 //go:embed version.txt

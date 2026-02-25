@@ -1,6 +1,6 @@
 # auto-commit-msg (acm)
 
-[![Build](https://github.com/sestrella/acm/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/acm/actions/workflows/build.yml)
+[![Build](https://github.com/sestrella/auto-commit-msg/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/auto-commit-msg/actions/workflows/build.yml)
 
 Generates a commit message from a `git diff` using AI.
 
@@ -12,7 +12,7 @@ Generates a commit message from a `git diff` using AI.
 ![demo](demo.gif)
 
 > [!NOTE] 
-> The [commit messages](https://github.com/sestrella/acm/commits/main/)
+> The [commit messages](https://github.com/sestrella/auto-commit-msg/commits/main/)
 > for this project were generated using this tool.
 
 ## Installation
@@ -33,8 +33,8 @@ following content:
 ```yml
 - repo: local
   hooks:
-    - id: acm
-      name: acm
+    - id: auto-commit-msg
+      name: auto-commit-msg
       entry: acm
       language: system
       stages: [prepare-commit-msg]
@@ -48,18 +48,18 @@ following content:
 
 ### devenv
 
-Add the `acm` input to the `devenv.yaml` file:
+Add the `auto-commit-msg` input to the `devenv.yaml` file:
 
 ```yml
 inputs:
-  acm:
-    url: github:sestrella/acm
+  auto-commit-msg:
+    url: github:sestrella/auto-commit-msg
     overlays: [default]
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
 ```
 
-Add the `acm` hook to the `devenv.nix` file as follows:
+Add the `auto-commit-msg` hook to the `devenv.nix` file as follows:
 
 ```nix
 { pkgs, lib, ... }:
@@ -67,9 +67,9 @@ Add the `acm` hook to the `devenv.nix` file as follows:
 {
   dotenv.enable = true;
 
-  git-hooks.hooks.acm = {
+  git-hooks.hooks.auto-commit-msg = {
     enable = true;
-    entry = lib.getExe pkgs.acm;
+    entry = lib.getExe pkgs.auto-commit-msg;
     stages = [ "prepare-commit-msg" ];
   };
 
@@ -84,19 +84,19 @@ variable is available.
 
 ## Configuration
 
-`acm` can be configured via a `.acm.toml` file in
+`auto-commit-msg` can be configured via a `.auto-commit-msg.toml` file in
 the project's root directory or the user's home directory. The available
 configuration parameters are:
 
-- **`trace`**: When `true`, appends acm execution traces to the commit message.
+- **`trace`**: When `true`, appends auto-commit-msg execution traces to the commit message.
   - **Default**: `false`
 
   The following metrics are appended to the commit message when trace is enabled:
 
-  - **`Version`**: The version of the `acm` command used.
+  - **`Version`**: The version of the `auto-commit-msg` command used.
   - **`Model`**: The model used to generate the commit message.
   - **`ResponseTime`**: The time it took to get a response from the AI model.
-  - **`ExecutionTime`**: The total time it took for the `acm` command to execute.
+  - **`ExecutionTime`**: The total time it took for the `auto-commit-msg` command to execute.
 
 - **`provider.base_url`**: The base URL of the OpenAI-like provider.
   - **Default**: `https://generativelanguage.googleapis.com/v1beta/openai`
@@ -109,7 +109,7 @@ configuration parameters are:
 - **`diff.threshold`**: The line count threshold to switch between `diff.short_model` and `diff.long_model`.
   - **Default**: `500`
 
-Here is an example `.acm.toml` file:
+Here is an example `.auto-commit-msg.toml` file:
 
 ```toml
 trace = true
@@ -126,9 +126,9 @@ threshold = 250
 
 ## Usage
 
-After setting `acm` as a [prepare-commit-msg] hook, invoking `git
+After setting `auto-commit-msg` as a [prepare-commit-msg] hook, invoking `git
 commit` without a commit message generates a commit message. If a commit message
-is given, `acm` does not generate a commit message and instead uses
+is given, `auto-commit-msg` does not generate a commit message and instead uses
 the one provided by the user.
 
 ## License
@@ -136,4 +136,4 @@ the one provided by the user.
 [MIT](LICENSE)
 
 [prepare-commit-msg]: https://git-scm.com/docs/githooks#_prepare_commit_msg
-[releases]: https://github.com/sestrella/acm/releases
+[releases]: https://github.com/sestrella/auto-commit-msg/releases
