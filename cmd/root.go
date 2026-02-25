@@ -40,7 +40,7 @@ var config Config
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "auto-commit-msg COMMIT_MSG_FILE",
+	Use:   "acm COMMIT_MSG_FILE",
 	Short: "Generates a commit message from a git diff using AI",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		var executionTime time.Time
